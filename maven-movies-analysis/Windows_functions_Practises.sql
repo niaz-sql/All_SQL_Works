@@ -50,41 +50,75 @@ WHERE order_id LIKE "%44262"
 -- ASSIGNMENT 3: First Value vs Last Value vs Nth Value
 
 -- View the rankings from the last assignment
-
+SELECT order_id, product_id, units,
+DENSE_RANK () OVER ( PARTITION BY order_id ORDER BY units DESC) as order_rank
+FROM orders
+ORDER BY order_id
 
 -- Add a column that contains the 2nd most popular product
 
 
--- Return the 2nd most popular product for each order
-
-
--- Alternative using DENSE RANK
-
--- Add a column that contains the rankings
+SELECT order_id, product_id, units,
+NTH_VALUE(product_id, 2) OVER ( PARTITION BY order_id ORDER BY units DESC) as order_rank
+FROM orders
+ORDER BY order_id
 
 
 -- Return the 2nd most popular product for each order
-
+SELECT order_id, product_id, units
+ FROM
+(SELECT order_id, product_id, units,
+NTH_VALUE(product_id, 2) OVER ( PARTITION BY order_id ORDER BY units DESC) as product_sec_rank
+FROM orders
+ORDER BY order_id) AS second_prod
+WHERE product_id = product_sec_rank
 
 -- ASSIGNMENT 4: Lead & Lag
 
 -- View the columns of interest
+SELECT customer_id, order_id, units
+FROM orders
 
 
 -- For each customer, return the total units within each order
+SELECT customer_id, order_id, SUM(units) AS all_units
+FROM orders
+GROUP BY customer_id, order_id
+ORDER BY customer_id
 
 
 -- Add on the transaction id to keep track of the order of the orders
-
+SELECT customer_id, order_id, MIN(transaction_id) AS t_id, SUM(units) AS all_units
+FROM orders
+GROUP BY customer_id, order_id
+ORDER BY customer_id
 
 -- Turn the query into a CTE and view the columns of interest
-
+WITH all_rows AS (SELECT customer_id, order_id, MIN(transaction_id) AS t_id, SUM(units) AS all_units
+					FROM orders
+					GROUP BY customer_id, order_id
+					ORDER BY customer_id, t_id)
+SELECT customer_id, order_id, all_units
+FROM all_rows
 
 -- Create a prior units column
-
+WITH all_rows AS (SELECT customer_id, order_id, MIN(transaction_id) AS t_id, SUM(units) AS all_units
+					FROM orders
+					GROUP BY customer_id, order_id
+					ORDER BY customer_id, t_id)
+SELECT customer_id, order_id, all_units,
+LAG (all_units) OVER ( PARTITION BY customer_id ORDER BY t_id) AS prior_units
+FROM all_rows
 
 -- For each customer, find the change in units per order over time
-
+WITH all_rows AS (SELECT customer_id, order_id, MIN(transaction_id) AS t_id, SUM(units) AS all_units
+					FROM orders
+					GROUP BY customer_id, order_id
+					ORDER BY customer_id, t_id)
+SELECT customer_id, order_id, all_units,
+LAG (all_units) OVER ( PARTITION BY customer_id ORDER BY t_id) AS prior_units,
+all_units - LAG (all_units) OVER ( PARTITION BY customer_id ORDER BY t_id)  AS diff
+FROM all_rows
 
 -- ASSIGNMENT 5: NTILE
 
