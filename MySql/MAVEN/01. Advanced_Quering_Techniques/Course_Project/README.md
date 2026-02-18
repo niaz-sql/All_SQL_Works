@@ -35,102 +35,102 @@ All analysis was performed using advanced SQL only, without external analytics t
 ### 🎓PART I 🎓School Analysis
 Key Questions Solved
 
-Reviewed school and school details tables
+1. Reviewed school and school details tables
 
-Calculated how many schools produced players per decade
+2. Calculated how many schools produced players per decade
 
-Identified the Top 5 schools overall producing the most players
+3. Identified the Top 5 schools overall producing the most players
 
-Determined the Top 3 schools per decade using ranking window functions
+4. Determined the Top 3 schools per decade using ranking window functions
 
-Techniques Used
+5. Techniques Used
 
-COUNT(DISTINCT)
+6. COUNT(DISTINCT)
 
-Decade calculation with FLOOR()
+7. Decade calculation with FLOOR()
 
-DENSE_RANK() for Top-N per group
+8. DENSE_RANK() for Top-N per group
 
-CTE structuring
+9. CTE structuring
 
 ### 🎓 PART II Salary Analysis
 Key Questions Solved
 
-Explored team salary data
+1. Explored team salary data
 
-Identified the Top 20% highest spending teams using NTILE()
+2. Identified the Top 20% highest spending teams using NTILE()
 
-Calculated cumulative team spending over time
+3. Calculated cumulative team spending over time
 
-Determined the first year each team surpassed $1 Billion in cumulative spending
+4. Determined the first year each team surpassed $1 Billion in cumulative spending
 
-Techniques Used
+5. Techniques Used
 
-NTILE() for percentile grouping
+6. NTILE() for percentile grouping
 
-Running totals with SUM() OVER
+7. Running totals with SUM() OVER
 
-Threshold milestone detection
+8. Threshold milestone detection
 
-Window function partitioning
+9. Window function partitioning
 
 ### 🧑‍💼 PART III — Player Career Analysis
 Key Questions Solved
 
-Counted total players in the dataset
+1. Counted total players in the dataset
 
-Calculated:
+2. Calculated:
 
-Age at debut
+3. Age at debut
 
-Age at final game
+4. Age at final game
 
-Career length (years)
+5. Career length (years)
 
-Identified each player's starting and ending team
+6. Identified each player's starting and ending team
 
-Counted players who:
+7. Counted players who:
 
-Started and ended on the same team
+8. Started and ended on the same team
 
-Played more than 10 years
+9. Played more than 10 years
 
-Techniques Used
+10. Techniques Used
 
-TIMESTAMPDIFF() for accurate age calculation
+11. TIMESTAMPDIFF() for accurate age calculation
 
-Multi-table joins
+12. Multi-table joins
 
-Career duration logic
+13. Career duration logic
 
-Conditional filtering
+14. Conditional filtering
 
 ### 📊 PART IV — Player Comparison Analysi
 Key Questions Solved
 
-Identified players sharing the same birthday
+1. Identified players sharing the same birthday
 
-Created team-level batting hand percentage breakdown
+2. Created team-level batting hand percentage breakdown
 
-Analyzed trends in:
+3. Analyzed trends in:
 
-Average height at debut
+4. Average height at debut
 
-Average weight at debut
+5. Average weight at debut
 
-Calculated decade-over-decade changes
+6. Calculated decade-over-decade changes
 
-Techniques Used
+7. Techniques Used
 
-Window functions
+8. Window functions
 
-Percentage calculations
+9. Percentage calculations
 
-Decade grouping
+10. Decade grouping
 
-Trend analysis
+11. Trend analysis
 
-Grouped aggregations
+12. Grouped aggregations
 
 # 📈 Analytical Highlights
 
@@ -144,17 +144,14 @@ Grouped aggregations
 🗂 Project Structure
 Course_Project/
 │
-├── schema.sql
-├── sample_queries.sql
-├── full_dataset.sql
+├── final_project_DB_mysql.sql
+├── final_project_solved.sql
 └── README.md
 
 
-schema.sql → Database table structure
+final_project_DB_mysql.sql → full DataBase. I could not upload it as its big size. Kindly download it (large file; may not preview on GitHub)
 
-sample_queries.sql → Core analytical queries
-
-full_dataset.sql → Complete dataset (large file; may not preview on GitHub)
+final_project_solved.sql → The solution I made
 
 ### ⚙️ Requirements
 
@@ -164,39 +161,35 @@ Window function support enabled
 
 ### 🚀 How to Run This Project
 
-Create a new MySQL database
+Create a new MySQL database using final_project_DB_mysql.sql to create tables
 
-Run schema.sql to create tables
-
-Import data using full_dataset.sql
-
-Execute queries from sample_queries.sql
+check solution at final_project_solved.sql
 
 ### 💼 Real-World Relevance
 
 This project simulates practical data analytics tasks such as:
 
-Institutional performance benchmarking
+✅ Institutional performance benchmarking
 
-Financial trend analysis
+✅ Financial trend analysis
 
-Player lifecycle analysis
+✅ Player lifecycle analysis
 
-Competitive ranking evaluation
+✅ Competitive ranking evaluation
 
-Demographic trend reporting
+✅ Demographic trend reporting
 
-Applicable to roles in:
+✅ Applicable to roles in:
 
-Data Analytics
+✅ Data Analytics
 
-Business Intelligence
+✅ Business Intelligence
 
-Financial Analysis
+✅ Financial Analysis
 
-Sports Analytics
+✅ Sports Analytics
 
-Freelance SQL Consulting
+✅Freelance SQL Consulting
 
 # 🎯 Author Note
 
